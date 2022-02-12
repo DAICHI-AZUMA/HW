@@ -1,0 +1,29 @@
+
+
+# 「表示件数」ドロップダウンリストをクリック
+element = browser.find_element_by_id("ID_fwListNaviDispBtm")
+
+# 「50件」を選択
+Select(element).select_by_value("50")
+time.sleep(1)
+
+# 今見ているページをBeautifulSoupで解析
+soup = BeautifulSoup(browser.page_source, "html.parser")
+
+# 「求人」のテーブルを検索
+jobs = soup.find_all("table", attrs={"class": "kyujin"})
+
+# 検索結果を格納する"message"を初期化
+message = ""
+
+
+# 「職種」「月給」「勤務地」「仕事の内容」を取得する
+for i, job in enumerate(jobs):
+    job_name = str(job.find("td", attrs={"class": "m13"}).text.strip())
+    salary_tags = job.find_all("tr", attrs={"class": "border_new"})[
+                               5].select(".disp_inline_block")
+    for t, salary_tag in enumerate(salary_tags):
+        job_salary = salary_tag.text
+
+
+print(message)
