@@ -22,6 +22,14 @@ time.sleep(2)
 browser.find_element_by_css_selector(".button.blue.main.retrieval_icn").click()
 time.sleep(2)
 
+#年齢入力
+browser.find_element_by_xpath("//*[@id='ID_nenreiInput']").send_keys("24")
+time.sleep(2)
+
+#年齢不問を除く
+browser.find_element_by_id("ID_LnenreiCKBox2").click()
+time.sleep(2)
+
 #大阪府内で探す
 element = browser.find_element_by_id("ID_tDFK1CmbBox")
 Select(element).select_by_value("27")  # 大阪府
@@ -98,6 +106,30 @@ time.sleep(2)
 
 #決定をクリック
 browser.find_element_by_id("ID_ok").click()
+time.sleep(2)
+
+#雇用形態を選択
+browser.find_element_by_xpath("//*[@id='ID_koyoFltmCKBox1']").click()
+time.sleep(2)
+
+#詳細検索条件をクリック
+browser.find_element_by_id("ID_searchShosaiBtn").click()
+time.sleep(2)
+
+#賞与アリをクリック
+browser.find_element_by_xpath("//*[@id='ID_shoyoAriCKBox1']").click()
+time.sleep(2)
+
+#派遣・請負を含まないを選択
+browser.find_element_by_id("ID_LhakenUkeoinCKBox3").click()
+time.sleep(2)
+
+#学歴不問をクリック
+browser.find_element_by_id("ID_grkiFumonCKBox").click()
+time.sleep(2)
+
+#OKをクリック
+browser.find_element_by_xpath("//*[@id='ID_saveCondBtn']").click()
 time.sleep(2)
 
 #検索をクリック
